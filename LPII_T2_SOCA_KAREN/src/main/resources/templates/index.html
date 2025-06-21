@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:fragment="header(title, section)">
+<head>
+    <title>Inicio - Alquiler de Películas</title>
+    <!-- Incluimos Bootstrap para los estilos desde un CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <section>
+        <div class="row justify-content-center">
+            <div class="col-md-8 text-center mb-5">
+                <h1 class="display-4 text-primary">Sistema de Alquiler de Películas</h1>
+                <p class="lead">Gestiona tus clientes, películas y alquileres de manera fácil y eficiente</p>
+            </div>
+        </div>
+
+        <div class="row">
+            <!-- Tarjeta Clientes -->
+            <div class="col-md-4 mb-4">
+                <div class="card h-100 shadow">
+                    <div class="card-header bg-primary text-white">
+                        <h5 class="card-title mb-0"><i class="bi bi-people-fill me-2"></i>Clientes</h5>
+                    </div>
+                    <div class="card-body">
+                        <p class="card-text">Administra el registro de clientes que realizan alquileres en tu sistema.</p>
+                        <ul class="list-group list-group-flush mb-3">
+                            <li class="list-group-item">Registro de nuevos clientes</li>
+                            <li class="list-group-item">Edición de información</li>
+                            <li class="list-group-item">Búsqueda y filtrado</li>
+                        </ul>
+                    </div>
+                    <div class="card-footer bg-transparent">
+                        <a th:href="@{/clientes}" class="btn btn-primary w-100">Gestionar Clientes</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tarjeta Películas -->
+            <div class="col-md-4 mb-4">
+                <div class="card h-100 shadow">
+                    <div class="card-header bg-success text-white">
+                        <h5 class="card-title mb-0"><i class="bi bi-film me-2"></i>Películas</h5>
+                    </div>
+                    <div class="card-body">
+                        <p class="card-text">Administra el catálogo de películas disponibles para alquiler.</p>
+                        <ul class="list-group list-group-flush mb-3">
+                            <li class="list-group-item">Agregar nuevas películas</li>
+                            <li class="list-group-item">Control de stock</li>
+                            <li class="list-group-item">Actualización de precios</li>
+                        </ul>
+                    </div>
+                    <div class="card-footer bg-transparent">
+                        <a th:href="@{/peliculas}" class="btn btn-success w-100">Gestionar Películas</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tarjeta Alquileres -->
+            <div class="col-md-4 mb-4">
+                <div class="card h-100 shadow">
+                    <div class="card-header bg-info text-white">
+                        <h5 class="card-title mb-0"><i class="bi bi-cart-check me-2"></i>Alquileres</h5>
+                    </div>
+                    <div class="card-body">
+                        <p class="card-text">Gestiona los alquileres realizados por tus clientes.</p>
+                        <ul class="list-group list-group-flush mb-3">
+                            <li class="list-group-item">Registro de nuevos alquileres</li>
+                            <li class="list-group-item">Devolución de películas</li>
+                            <li class="list-group-item">Historial de transacciones</li>
+                        </ul>
+                    </div>
+                    <div class="card-footer bg-transparent">
+                        <a th:href="@{/alquileres}" class="btn btn-info w-100">Gestionar Alquileres</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row mt-5">
+            <div class="col-md-6 offset-md-3 text-center">
+                <div class="card shadow">
+                    <div class="card-body">
+                        <h4 class="card-title mb-4">Estadísticas Rápidas</h4>
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="stat-card">
+                                    <h3 th:text="${#lists.size(clientes)}" class="text-primary">0</h3>
+                                    <p class="text-muted">Clientes</p>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="stat-card">
+                                    <h3 th:text="${#lists.size(peliculas)}" class="text-success">0</h3>
+                                    <p class="text-muted">Películas</p>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="stat-card">
+                                    <h3 th:text="${#lists.size(alquileres)}" class="text-info">0</h3>
+                                    <p class="text-muted">Alquileres</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <style>
+        .stat-card {
+            padding: 15px;
+            border-radius: 8px;
+            background-color: #f8f9fa;
+        }
+        .stat-card h3 {
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+        .card {
+            transition: transform 0.3s;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+        }
+    </style>
+</body>
+</html>
